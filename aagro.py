@@ -54,6 +54,7 @@ while True:
                     print("8 - cadastrar novo usuario")
                     print("9 - listar usuarios cadastrados")
                     print("10 - banir usuario do sistema")
+                    print("11 - relatorio geral")
                     print("0 - fazer logout")
                     print("==========================================")
 
@@ -274,6 +275,33 @@ while True:
                                     print("usuário banido e removido do sistema")
                             if banido == False:
                                 print("usuario nao encontrado")
+                    elif op ==11:
+                        print(" ==========================================") 
+                        print(" RELATÓRIO GERAL DA FAZENDA") 
+                        print("==========================================")
+                        tipos_animais = {} for animal in rebanho: tipo = animal[0] 
+                            if tipo in tipos_animais: tipos_animais[tipo] += 1 else: tipos_animais[tipo] = 1 print(" --- Rebanho por Tipo ---") 
+                            if len(tipos_animais) == 0: print("Nenhum animal cadastrado.") 
+                                else:
+                                    for tipo, quantidade in tipos_animais.items(): 
+                                        print(f"{tipo}: {quantidade} animal(is)") 
+                                        total_leite = 0  
+                                        estoque_queijos = {} 
+                                        for produto in producao: nome = produto[0].lower() quantidade = produto[1] 
+                                        if "leite" in nome:
+                                            total_leite += quantidade 
+                                            if "queijo" in nome:
+                                                estoque_queijos[produto[0]] = quantidade 
+                                                print(" --- Produção de Leite ---") 
+                                                print(f"Total em estoque: {total_leite} litro(s)") 
+                                                print(" --- Estoque de Queijos ---") 
+                                                if len(estoque_queijos) == 0: 
+                                                    print("Nenhum queijo em estoque.") 
+                                                else:
+                                                    for queijo, quantidade in estoque_queijos.items(): 
+                                                        print(f"{queijo}: {quantidade} kg/L") 
+                            print(" ==========================================")
+
 
                     elif op == 0:
                         print("logout do ADM realizado")
