@@ -99,20 +99,43 @@ while True:
                                 print(f"tipo: {animal[0]} | brinco: {animal[1]} | status: {animal[2]}")
 
                     elif op == 3:
-                        if len(rebanho) == 0:
-                            print("não ha animais cadastrados para atualizar")
+                        if len(compras) == 0:
+                            print("você precisa efetuar uma compra antes de agendar uma retirada")
                         else:
-                            busca_brinco = input("digite o brinco do animal que deseja atualizar: ")
-                            achou = False
-                            for animal in rebanho:
-                                if animal[1] == busca_brinco:
-                                    achou = True
-                                    print(f"status atual: {animal[2]}")
-                                    novo_status = input("digite o NOVO status do animal: ")
-                                    animal[2] = novo_status
-                                    print("status updated com sucesso!")
-                            if not achou:
-                                print("animal não encontrado com este brinco.")
+                            print("\n=== AGENDAMENTO DE TRANSPORTE ===")
+
+                            data = input("digite a data da retirada (ex: 25/05/2026): ")
+                            horario = input("digite o horário (ex: 08:30): ")
+                            placa = input("digite a placa do caminhão/veículo de carga: ")
+
+                            agendamentos.append([data, horario, placa])
+
+                            print("\n==========================================")
+                            print("         RECIBO / TICKET DE CARGA")
+                            print("==========================================")
+                            print(f"CLIENTE: {usuario}")
+                            print(f"DATA DA RETIRADA: {data}")
+                            print(f"HORÁRIO: {horario}")
+                            print(f"VEÍCULO (PLACA): {placa}")
+                            print("------------------------------------------")
+                            print("ITENS COMPRADOS:")
+        
+                            valor_total = 0.0
+
+                            for compra in compras:
+                                print(
+                                    f"Produto: {compra[0]} | "
+                                    f"Quantidade: {compra[1]} | "
+                                    f"Valor: R$ {compra[2]:.2f}"
+                                    )
+                                    valor_total += compra[2]
+
+                                    print("------------------------------------------")
+                                    print(f"VALOR TOTAL DA CARGA: R$ {valor_total:.2f}")
+                                    print("STATUS: RETIRADA AGENDADA")
+                                    print("==========================================")
+
+                                    print("retirada agendada com sucesso! o produtor foi notificado")
 
                     elif op == 4:
                         if len(rebanho) == 0:
